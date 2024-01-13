@@ -40,8 +40,8 @@ function TvShowCardComponent({title, genre, rating, description,}) {
 }
 
 
-function TvShowsDrama() {
-  const [desiredGenre, setDesiredGenre] = useState('Drama');
+function TvShowsComedy() {
+  const [desiredGenre, setDesiredGenre] = useState('Comedy');
 
   // Assume you have the 'tvShowsData' array with objects containing the data of TV shows
   return (
@@ -62,4 +62,4 @@ function TvShowsDrama() {
   );
 }
 
-export default TvShowsDrama;
+export default TvShowsComedy;

@@ -31,7 +31,7 @@ const tvShowsData = [
   {
     id: 5,
     title: 'Black Mirror',
-    genre: 'Drama, Sci-Fi, Thriller',
+    genre: 'Drama',
     rating: 8.8,
     description: 'An anthology series that explores the dark and often dystopian aspects of technological advancements.',
   },

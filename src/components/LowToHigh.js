@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React from 'react';
 import tvShowsData from "../assets/data/tvShowsdata";
-
 
 const tvShowWrapper = {
     display: "flex",
@@ -40,26 +39,39 @@ function TvShowCardComponent({title, genre, rating, description,}) {
 }
 
 
-function TvShowsDrama() {
-  const [desiredGenre, setDesiredGenre] = useState('Drama');
+function LowToHighComponent({ tvShowsData }) {
 
-  // Assume you have the 'tvShowsData' array with objects containing the data of TV shows
+  const sortTvShowsByRating = () => {
+   
+    if (!tvShowsData) {
+      return [];
+    }
+
+    return tvShowsData.slice().sort((a, b) => {
+      // Assuming rating is a number, you can directly compare them
+      return a.rating - b.rating;
+    });
+  };
+
+  // Sort TV shows by rating
+  const sortedTvShows = sortTvShowsByRating();
+
+  console.log('tvShowsData:', tvShowsData);
+  console.log('sortedTvShows:', sortedTvShows);
+
   return (
     <div style={tvShowWrapper}>
-      {tvShowsData &&
-        tvShowsData
-          .filter(({ genre }) => genre.includes(desiredGenre)) // Check if genre includes desiredGenre
-          .map(({ id, title, genre, rating, description }) => (
-            <TvShowCardComponent
-              key={id}
-              title={title}
-              description={description}
-              genre={genre}
-              rating={rating}
-            />
-          ))}
+      {sortedTvShows.map(({ id, title, genre, rating, description }) => (
+        <TvShowCardComponent
+          key={id}
+          title={title}
+          description={description}
+          genre={genre}
+          rating={rating}
+        />
+      ))}
     </div>
   );
 }
 
-export default TvShowsDrama;
+export default LowToHighComponent;
